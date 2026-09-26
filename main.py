@@ -1,11 +1,11 @@
+import os
 import time
 import requests
 from bs4 import BeautifulSoup
 
-# 1. ضع هنا بيانات التيليجرام الخاصة بك (تأكد من ملء هذه الحقول)
-TELEGRAM_TOKEN = "8977287587:AAH-pH1e156i6iEVzcfas9B18pydxfQN0OA"
-TELEGRAM_CHAT_ID = "1088411441"
-
+# قراءة البيانات بأمان من خادم جيتهاب المخفي
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 # الرابط المباشر لصفحة رحلات اعرف بلدك
 URL_TO_MONITOR = "https://apps.emys.gov.eg/youth/trip_public"
 

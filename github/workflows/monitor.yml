@@ -1,0 +1,28 @@
+name: Youth Trips Monitor
+
+on:
+  schedule:
+    # لتشغيل الفحص تلقائياً كل 5 دقائق (يمكنك تعديلها)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # يتيح لك تشغيله يدوياً أيضاً للتحقق
+
+jobs:
+  check-trips:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: Run monitoring script
+      run: python main.py
